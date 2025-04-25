@@ -23,7 +23,7 @@ export default function SubmitPage() {
               <h3 className="text-lg font-medium text-white mb-2">2. Fork the Repository</h3>
               <p className="text-gray-300 mb-4">Fork our GitHub repository to your account so you can make changes.</p>
               <Button asChild variant="outline" className="flex items-center gap-2 border-gray-700 text-gray-300">
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/xfq/rules" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4" />
                   Fork Repository
                 </a>

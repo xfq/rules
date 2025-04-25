@@ -48,7 +48,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                <a href="https://github.com/xfq/rules" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
                   <Github className="h-4 w-4" />
                   GitHub Repository
                 </a>
