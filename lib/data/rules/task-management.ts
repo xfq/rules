@@ -25,8 +25,8 @@ Example Markdown Task List:
 ## 🔄 In Progress
 
 ### Backend API Development
-- [x] Create user authentication endpoints (completed Apr 15, @dev1)
-- [x] Implement JWT token validation (completed Apr 16, @dev2)
+- [x] Create user authentication endpoints
+- [x] Implement JWT token validation
 - [ ] Set up rate limiting middleware #security
 - [ ] Create documentation for API endpoints #docs
   - [x] Authentication endpoints
