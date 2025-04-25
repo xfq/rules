@@ -8,6 +8,8 @@ import { BlazorRules } from './blazor';
 import { UnityRules } from './unity';
 import { LaravelVueRules } from './laravel-vue';
 import { TaskManagementRules } from './task-management';
+import { ExpoReactNativeRules } from './expo-react-native';
+import { ExpoRouterRules } from './expo-router';
 
 // Combine all rules into one array
 export const allRules = [
@@ -20,8 +22,23 @@ export const allRules = [
   ...BlazorRules,
   ...UnityRules,
   ...LaravelVueRules,
-  ...TaskManagementRules
+  ...TaskManagementRules,
+  ...ExpoReactNativeRules,
+  ...ExpoRouterRules
 ];
 
 // Export individual rule collections for direct use
-export { TailwindRules, ExtensionRules, ShadcnRules, GatsbyRules, DeepLearningRules, LaravelRules, BlazorRules, UnityRules, LaravelVueRules, TaskManagementRules }; 
+export { 
+  TailwindRules, 
+  ExtensionRules, 
+  ShadcnRules, 
+  GatsbyRules, 
+  DeepLearningRules, 
+  LaravelRules, 
+  BlazorRules, 
+  UnityRules, 
+  LaravelVueRules, 
+  TaskManagementRules, 
+  ExpoReactNativeRules, 
+  ExpoRouterRules 
+}; 
