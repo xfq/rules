@@ -7,6 +7,7 @@ import { LaravelRules } from './laravel';
 import { BlazorRules } from './blazor';
 import { UnityRules } from './unity';
 import { LaravelVueRules } from './laravel-vue';
+import { TaskManagementRules } from './task-management';
 
 // Combine all rules into one array
 export const allRules = [
@@ -18,8 +19,9 @@ export const allRules = [
   ...LaravelRules,
   ...BlazorRules,
   ...UnityRules,
-  ...LaravelVueRules
+  ...LaravelVueRules,
+  ...TaskManagementRules
 ];
 
 // Export individual rule collections for direct use
-export { TailwindRules, ExtensionRules, ShadcnRules, GatsbyRules, DeepLearningRules, LaravelRules, BlazorRules, UnityRules, LaravelVueRules }; 
+export { TailwindRules, ExtensionRules, ShadcnRules, GatsbyRules, DeepLearningRules, LaravelRules, BlazorRules, UnityRules, LaravelVueRules, TaskManagementRules }; 
