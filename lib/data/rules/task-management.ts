@@ -34,7 +34,7 @@ Example Markdown Task List:
   - [ ] Content endpoints
 
 ### Frontend Implementation
-- [x] Create login/signup components (completed Apr 14, @dev3)
+- [x] Create login/signup components
 - [ ] Implement dashboard layout #priority
   - [x] Navigation sidebar
   - [ ] Content area with cards
@@ -57,15 +57,15 @@ Example Markdown Task List:
 ## ✅ Completed
 
 ### Project Setup
-- [x] Initialize repository (completed Apr 5, @dev1)
-- [x] Set up project structure (completed Apr 5, @dev2)
-- [x] Configure development environment (completed Apr 6, @dev3)
-- [x] Add base dependencies (completed Apr 6, @dev1)
+- [x] Initialize repository
+- [x] Set up project structure
+- [x] Configure development environment
+- [x] Add base dependencies
 
 ### Planning
-- [x] Define MVP requirements (completed Apr 7, @all)
-- [x] Create initial wireframes (completed Apr 8, @designer)
-- [x] Set up project board (completed Apr 7, @pm)
+- [x] Define MVP requirements
+- [x] Create initial wireframes
+- [x] Set up project board
 
 ## 📌 Notes & Resources
 - [Design Figma](https://figma.com/example-link)
