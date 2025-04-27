@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules/${params.slug}`,
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=${encodeURIComponent(rule.title)}`,
+          url: "/twitter-card.png",
           width: 1200,
           height: 630,
           alt: rule.title,
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       card: 'summary_large_image',
       title: `${rule.title} | Trae Rules Directory`,
       description,
-      images: [`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=${encodeURIComponent(rule.title)}`],
+      images: ["/twitter-card.png"],
     },
   }
 } 

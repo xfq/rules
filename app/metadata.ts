@@ -15,7 +15,7 @@ export const defaultMetadata: Metadata = {
     siteName: 'Trae Rules Directory',
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/og?title=Trae Rules Directory`,
+        url: '/twitter-card.png',
         width: 1200,
         height: 630,
         alt: 'Trae Rules Directory',

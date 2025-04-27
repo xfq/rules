@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/submit`,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Submit a Rule`,
+        url: "/twitter-card.png",
         width: 1200,
         height: 630,
         alt: "Submit a Rule to Trae Rules Directory",
@@ -22,6 +22,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Submit a Rule | Trae Rules Directory",
     description: "Contribute to the Trae Rules Directory by submitting your own AI coding rules to help other developers enhance their workflow",
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Submit a Rule`],
+    images: ["/twitter-card.png"],
   },
 } 

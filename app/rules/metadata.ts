@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules`,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Browse Rules`,
+        url: "/twitter-card.png",
         width: 1200,
         height: 630,
         alt: "Trae Rules Directory - Browse Rules",
@@ -23,6 +23,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Browse Rules | Trae Rules Directory',
     description: 'Browse and search through our collection of AI coding rules to enhance your development workflow',
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Browse Rules`],
+    images: ["/twitter-card.png"],
   },
 } 
