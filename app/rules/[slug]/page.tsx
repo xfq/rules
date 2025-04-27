@@ -109,14 +109,14 @@ export default function RulePage({ params }: { params: { slug: string } }) {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules/${rule.slug}`} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=${encodeURIComponent(rule.title)}`} />
+        <meta property="og:image" content="/twitter-card.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={rule.title} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${rule.title} | Trae Rules Directory`} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=${encodeURIComponent(rule.title)}`} />
+        <meta name="twitter:image" content="/twitter-card.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

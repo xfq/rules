@@ -119,14 +119,14 @@ export default function Home() {
         <meta property="og:description" content="Find, share, and use AI coding rules to enhance your development workflow. A community-driven collection of Trae Rules for developers." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL || ""} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Trae Rules Directory`} />
+        <meta property="og:image" content="/twitter-card.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Trae Rules Directory - Discover AI Coding Rules" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Trae Rules Directory | Discover AI Coding Rules" />
         <meta name="twitter:description" content="Find, share, and use AI coding rules to enhance your development workflow. A community-driven collection of Trae Rules for developers." />
-        <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/og?title=Trae Rules Directory`} />
+        <meta name="twitter:image" content="/twitter-card.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
