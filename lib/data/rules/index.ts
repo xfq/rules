@@ -14,6 +14,7 @@ import { FlutterDevelopmentRules } from './flutter-development';
 import { FlutterRiverpodRules } from './flutter-riverpod';
 import { SupabaseAuthRules } from './nextjs-supabase-auth';
 import { ConvexRules } from './convex';
+import { InternationalizationRules } from './internationalization';
 
 // Combine all rules into one array
 export const allRules = [
@@ -32,7 +33,8 @@ export const allRules = [
   ...FlutterDevelopmentRules,
   ...FlutterRiverpodRules,
   ...SupabaseAuthRules,
-  ...ConvexRules
+  ...ConvexRules,
+  ...InternationalizationRules
 ];
 
 // Export individual rule collections for direct use
@@ -52,5 +54,6 @@ export {
   FlutterDevelopmentRules,
   FlutterRiverpodRules,
   SupabaseAuthRules,
-  ConvexRules
+  ConvexRules,
+  InternationalizationRules
 }; 
