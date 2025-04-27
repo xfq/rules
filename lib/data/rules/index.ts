@@ -12,6 +12,7 @@ import { ExpoReactNativeRules } from './expo-react-native';
 import { ExpoRouterRules } from './expo-router';
 import { FlutterDevelopmentRules } from './flutter-development';
 import { FlutterRiverpodRules } from './flutter-riverpod';
+import { SupabaseAuthRules } from './nextjs-supabase-auth';
 
 // Combine all rules into one array
 export const allRules = [
@@ -28,7 +29,8 @@ export const allRules = [
   ...ExpoReactNativeRules,
   ...ExpoRouterRules,
   ...FlutterDevelopmentRules,
-  ...FlutterRiverpodRules
+  ...FlutterRiverpodRules,
+  ...SupabaseAuthRules
 ];
 
 // Export individual rule collections for direct use
@@ -46,5 +48,6 @@ export {
   ExpoReactNativeRules, 
   ExpoRouterRules,
   FlutterDevelopmentRules,
-  FlutterRiverpodRules
+  FlutterRiverpodRules,
+  SupabaseAuthRules
 }; 
