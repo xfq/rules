@@ -10,6 +10,8 @@ import { LaravelVueRules } from './laravel-vue';
 import { TaskManagementRules } from './task-management';
 import { ExpoReactNativeRules } from './expo-react-native';
 import { ExpoRouterRules } from './expo-router';
+import { FlutterDevelopmentRules } from './flutter-development';
+import { FlutterRiverpodRules } from './flutter-riverpod';
 
 // Combine all rules into one array
 export const allRules = [
@@ -24,7 +26,9 @@ export const allRules = [
   ...LaravelVueRules,
   ...TaskManagementRules,
   ...ExpoReactNativeRules,
-  ...ExpoRouterRules
+  ...ExpoRouterRules,
+  ...FlutterDevelopmentRules,
+  ...FlutterRiverpodRules
 ];
 
 // Export individual rule collections for direct use
@@ -40,5 +44,7 @@ export {
   LaravelVueRules, 
   TaskManagementRules, 
   ExpoReactNativeRules, 
-  ExpoRouterRules 
+  ExpoRouterRules,
+  FlutterDevelopmentRules,
+  FlutterRiverpodRules
 }; 
