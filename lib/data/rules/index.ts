@@ -13,6 +13,7 @@ import { ExpoRouterRules } from './expo-router';
 import { FlutterDevelopmentRules } from './flutter-development';
 import { FlutterRiverpodRules } from './flutter-riverpod';
 import { SupabaseAuthRules } from './nextjs-supabase-auth';
+import { ConvexRules } from './convex';
 
 // Combine all rules into one array
 export const allRules = [
@@ -30,7 +31,8 @@ export const allRules = [
   ...ExpoRouterRules,
   ...FlutterDevelopmentRules,
   ...FlutterRiverpodRules,
-  ...SupabaseAuthRules
+  ...SupabaseAuthRules,
+  ...ConvexRules
 ];
 
 // Export individual rule collections for direct use
@@ -49,5 +51,6 @@ export {
   ExpoRouterRules,
   FlutterDevelopmentRules,
   FlutterRiverpodRules,
-  SupabaseAuthRules
+  SupabaseAuthRules,
+  ConvexRules
 }; 
