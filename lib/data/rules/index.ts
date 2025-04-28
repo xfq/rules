@@ -16,6 +16,8 @@ import { SupabaseAuthRules } from './nextjs-supabase-auth';
 import { ConvexRules } from './convex';
 import { InternationalizationRules } from './internationalization';
 import { HtmlCssBestPracticesRules } from './html-css-best-practices';
+import { JavaSpringRules } from './java-spring';
+import { JavaQuarkusRules } from './java-quarkus';
 
 // Combine all rules into one array
 export const allRules = [
@@ -36,7 +38,9 @@ export const allRules = [
   ...SupabaseAuthRules,
   ...ConvexRules,
   ...InternationalizationRules,
-  ...HtmlCssBestPracticesRules
+  ...HtmlCssBestPracticesRules,
+  ...JavaSpringRules,
+  ...JavaQuarkusRules
 ];
 
 // Export individual rule collections for direct use
@@ -58,5 +62,7 @@ export {
   SupabaseAuthRules,
   ConvexRules,
   InternationalizationRules,
-  HtmlCssBestPracticesRules
+  HtmlCssBestPracticesRules,
+  JavaSpringRules,
+  JavaQuarkusRules
 }; 
