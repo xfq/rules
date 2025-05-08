@@ -37,7 +37,9 @@ export const defaultMetadata: Metadata = {
 
 // Metadata specific to the Homepage
 export const homepageMetadata: Metadata = {
-  title: 'Trae Rules Directory', // Specific title for homepage
+  title: {
+    absolute: 'Trae Rules Directory' // Ensures this title is used as-is
+  },
   description: 'Discover, share, and utilize innovative AI coding rules on the Trae Rules Directory. Enhance your development workflow with a community-driven collection of best practices and prompts for AI-assisted coding.',
   keywords: ['Trae Rules', 'AI coding rules', 'discover AI rules', 'share AI rules', 'coding assistance', 'development workflow', 'AI assisted development', 'community coding rules'],
   openGraph: {
