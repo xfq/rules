@@ -6,6 +6,8 @@ import Link from "next/link"
 import { Search, X, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { allRules } from "@/lib/data/rules"
+// Removed: import { homepageMetadata } from "./metadata"
+// Removed: export const metadata = homepageMetadata
 
 export default function Home() {
   const router = useRouter()
