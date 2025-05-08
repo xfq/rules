@@ -9,38 +9,37 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { allRules } from "@/lib/data/rules"
-import Head from "next/head"
 
 export default function RulesPage() {
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [filteredRules, setFilteredRules] = useState<typeof allRules>(allRules)
+  const [isClient, setIsClient] = useState(false)
 
-  // Get search query from URL on initial load
   useEffect(() => {
-    const queryParam = searchParams.get("search")
-    if (queryParam) {
-      setSearchQuery(queryParam)
-    }
+    setIsClient(true)
+  }, [])
 
-    const categoryParam = searchParams.get("category")
-    if (categoryParam) {
-      setSelectedCategories([categoryParam])
+  useEffect(() => {
+    const currentSearch = searchParams.get("search") || ""
+    const currentCategory = searchParams.get("category") || "all"
+    setSearchQuery(currentSearch)
+    setSelectedCategories(currentCategory === "all" ? [] : [currentCategory])
+
+    let rules = allRules
+    if (currentSearch) {
+      rules = rules.filter(
+        (rule) =>
+          rule.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          rule.tags.some((tag) => tag.toLowerCase().includes(currentSearch.toLowerCase()))
+      )
     }
+    if (currentCategory !== "all") {
+      rules = rules.filter((rule) => rule.tags.includes(currentCategory))
+    }
+    setFilteredRules(rules)
   }, [searchParams])
-
-  // Filter rules based on search query and selected categories
-  const filteredRules = allRules.filter((rule) => {
-    const matchesSearch =
-      searchQuery === "" ||
-      rule.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      rule.content.toLowerCase().includes(searchQuery.toLowerCase())
-
-    const matchesCategories =
-      selectedCategories.length === 0 || rule.tags.some((tag) => selectedCategories.includes(tag))
-
-    return matchesSearch && matchesCategories
-  })
 
   // Toggle category selection
   const toggleCategory = (category: string) => {
@@ -52,47 +51,22 @@ export default function RulesPage() {
   // Get all unique categories from the tags in all rules
   const allCategories = Array.from(new Set(allRules.flatMap((rule) => rule.tags))).sort()
 
-  // Create structured data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Browse Rules | Trae Rules Directory",
-    "description": "Browse and search through our collection of AI coding rules to enhance your development workflow",
-    "url": `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules`,
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": filteredRules.map((rule, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "url": `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules/${rule.slug}`,
-        "name": rule.title
-      }))
-    }
+  const handleCategoryChange = (newCategory: string) => {
+    const currentSearch = searchParams.get("search") || ""
+    setSelectedCategories(newCategory === "all" ? [] : [newCategory])
+    // Update URL
+    const params = new URLSearchParams()
+    if (currentSearch) params.set("search", currentSearch)
+    if (newCategory !== "all") params.set("category", newCategory)
+    window.history.pushState(null, "", `/rules?${params.toString()}`)
+  }
+
+  const clearCategoryFilter = () => {
+    handleCategoryChange("all")
   }
 
   return (
     <>
-      <Head>
-        <title>Browse Rules | Trae Rules Directory</title>
-        <meta name="description" content="Browse and search through our collection of AI coding rules to enhance your development workflow" />
-        <meta name="keywords" content="AI rules, coding rules, development workflow, AI assistance, coding assistance" />
-        <meta property="og:title" content="Browse Rules | Trae Rules Directory" />
-        <meta property="og:description" content="Browse and search through our collection of AI coding rules to enhance your development workflow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules`} />
-        <meta property="og:image" content="/twitter-card.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Trae Rules Directory - Browse Rules" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Browse Rules | Trae Rules Directory" />
-        <meta name="twitter:description" content="Browse and search through our collection of AI coding rules to enhance your development workflow" />
-        <meta name="twitter:image" content="/twitter-card.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
       <main className="min-h-screen bg-gray-950 py-12 px-4 md:px-6 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-8">Browse Rules</h1>
@@ -146,7 +120,7 @@ export default function RulesPage() {
                     <Button
                       variant="ghost"
                       className="w-full mt-2 text-gray-400 hover:text-white"
-                      onClick={() => setSelectedCategories([])}
+                      onClick={clearCategoryFilter}
                       aria-label="Clear filters"
                     >
                       Clear filters

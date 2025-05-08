@@ -4,10 +4,9 @@ import { useState, useEffect, use } from "react"
 import Link from "next/link"
 import { ArrowLeft, Copy, Check, Terminal, Link as LinkIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 import { allRules } from "@/lib/data/rules"
 import { incrementRuleView } from "@/lib/supabase"
-import Head from "next/head"
 
 type CopyType = "content" | "command" | "url" | null;
 
@@ -49,26 +48,6 @@ export default function RulePage({ params }: { params: { slug: string } }) {
     )
   }
 
-  // Prepare metadata info for Head
-  const description = rule.content.length > 160 
-    ? `${rule.content.slice(0, 157)}...` 
-    : rule.content
-
-  // Create structured data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": rule.title,
-    "description": rule.content.length > 160 ? `${rule.content.slice(0, 157)}...` : rule.content,
-    "keywords": rule.tags.join(", "),
-    "author": typeof rule.author === 'string' ? rule.author : rule.author?.name,
-    "datePublished": new Date().toISOString().split('T')[0], // Use actual publication date if available
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules/${rule.slug}`
-    }
-  }
-
   const copyContent = () => {
     navigator.clipboard.writeText(rule.content)
     setCopied("content")
@@ -101,27 +80,6 @@ export default function RulePage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <Head>
-        <title>{`${rule.title} | Trae Rules Directory`}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content={rule.tags.join(", ")} />
-        <meta property="og:title" content={`${rule.title} | Trae Rules Directory`} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules/${rule.slug}`} />
-        <meta property="og:image" content="/twitter-card.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={rule.title} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${rule.title} | Trae Rules Directory`} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="/twitter-card.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
       <main className="min-h-screen bg-gray-950 py-12 px-4 md:px-6 lg:px-8">
         <div className="container mx-auto max-w-3xl">
           {/* Back Button */}

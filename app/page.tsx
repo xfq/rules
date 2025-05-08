@@ -6,40 +6,6 @@ import Link from "next/link"
 import { Search, X, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { allRules } from "@/lib/data/rules"
-import Head from "next/head"
-
-// Temporary popular rules component without view counts
-const PopularRules = ({ limit = 3 }) => {
-  // Just show some rules directly from the allRules array
-  // In a real implementation, you would fetch from Supabase but not display the counts
-  const somePopularRules = allRules.slice(0, limit)
-  
-  return (
-    <div className="space-y-4">
-      {somePopularRules.map((rule) => (
-        <Link
-          key={rule.slug}
-          href={`/rules/${rule.slug}`}
-          className="block bg-gray-900 border border-gray-700 rounded-lg p-4 hover:border-purple-500 transition-colors"
-        >
-          <h3 className="text-lg font-semibold text-white mb-2">{rule.title}</h3>
-          <div className="flex justify-between items-center">
-            <div className="flex flex-wrap gap-2">
-              {rule.tags.slice(0, 2).map((tag) => (
-                <span key={tag} className="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded-full">
-                  {tag}
-                </span>
-              ))}
-              {rule.tags.length > 2 && (
-                <span className="px-2 py-0.5 text-gray-400 text-xs">+{rule.tags.length - 2}</span>
-              )}
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  )
-}
 
 export default function Home() {
   const router = useRouter()
@@ -91,47 +57,8 @@ export default function Home() {
     setFilteredRules([])
   }
 
-  // Create structured data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Trae Rules Directory",
-    "url": process.env.NEXT_PUBLIC_BASE_URL || "",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${process.env.NEXT_PUBLIC_BASE_URL || ""}/rules?search={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    },
-    "description": "Find, share, and use AI coding rules to enhance your development workflow",
-    "keywords": "Trae Rules, AI coding rules, coding assistance, development workflow"
-  }
-
   return (
     <>
-      <Head>
-        <title>Trae Rules Directory | Discover AI Coding Rules</title>
-        <meta name="description" content="Find, share, and use AI coding rules to enhance your development workflow. A community-driven collection of Trae Rules for developers." />
-        <meta name="keywords" content="Trae Rules, AI coding rules, coding assistance, development workflow, AI assistance, productivity tools" />
-        <meta property="og:title" content="Trae Rules Directory | Discover AI Coding Rules" />
-        <meta property="og:description" content="Find, share, and use AI coding rules to enhance your development workflow. A community-driven collection of Trae Rules for developers." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL || ""} />
-        <meta property="og:image" content="/twitter-card.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Trae Rules Directory - Discover AI Coding Rules" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Trae Rules Directory | Discover AI Coding Rules" />
-        <meta name="twitter:description" content="Find, share, and use AI coding rules to enhance your development workflow. A community-driven collection of Trae Rules for developers." />
-        <meta name="twitter:image" content="/twitter-card.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
       <main className="flex min-h-screen flex-col">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-gray-900 to-gray-800 py-20 px-4 md:px-6 lg:px-8">
@@ -328,3 +255,36 @@ const featuredRules = [
     categories: ["UI", "React", "TailwindCSS"],
   },
 ]
+
+// Temporary popular rules component without view counts
+const PopularRules = ({ limit = 3 }) => {
+  // Just show some rules directly from the allRules array
+  // In a real implementation, I should fetch from Supabase but not display the counts
+  const somePopularRules = allRules.slice(0, limit)
+  
+  return (
+    <div className="space-y-4">
+      {somePopularRules.map((rule) => (
+        <Link
+          key={rule.slug}
+          href={`/rules/${rule.slug}`}
+          className="block bg-gray-900 border border-gray-700 rounded-lg p-4 hover:border-purple-500 transition-colors"
+        >
+          <h3 className="text-lg font-semibold text-white mb-2">{rule.title}</h3>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-wrap gap-2">
+              {rule.tags.slice(0, 2).map((tag) => (
+                <span key={tag} className="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded-full">
+                  {tag}
+                </span>
+              ))}
+              {rule.tags.length > 2 && (
+                <span className="px-2 py-0.5 text-gray-400 text-xs">+{rule.tags.length - 2}</span>
+              )}
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  )
+}

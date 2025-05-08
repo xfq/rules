@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { GoogleAnalytics, GoogleAnalyticsScript } from "@/lib/analytics"
-import { defaultMetadata } from "./metadata"
+import { homepageMetadata } from "./metadata"
 import { Metadata } from "next"
 
 const fontSans = FontSans({
@@ -15,7 +15,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
-export const metadata: Metadata = defaultMetadata
+export const metadata: Metadata = homepageMetadata
 
 export default function RootLayout({
   children,
