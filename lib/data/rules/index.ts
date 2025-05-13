@@ -18,6 +18,7 @@ import { InternationalizationRules } from './internationalization';
 import { HtmlCssBestPracticesRules } from './html-css-best-practices';
 import { JavaSpringRules } from './java-spring';
 import { JavaQuarkusRules } from './java-quarkus';
+import { TraeIDEWorkflowRules } from './trae-ide-workflow';
 
 // Combine all rules into one array
 export const allRules = [
@@ -40,7 +41,8 @@ export const allRules = [
   ...InternationalizationRules,
   ...HtmlCssBestPracticesRules,
   ...JavaSpringRules,
-  ...JavaQuarkusRules
+  ...JavaQuarkusRules,
+  ...TraeIDEWorkflowRules
 ];
 
 // Export individual rule collections for direct use
@@ -64,5 +66,6 @@ export {
   InternationalizationRules,
   HtmlCssBestPracticesRules,
   JavaSpringRules,
-  JavaQuarkusRules
+  JavaQuarkusRules,
+  TraeIDEWorkflowRules
 }; 
