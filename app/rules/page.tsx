@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, Filter } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -12,6 +12,7 @@ import { allRules } from "@/lib/data/rules"
 
 export default function RulesPage() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [filteredRules, setFilteredRules] = useState<typeof allRules>(allRules)
@@ -40,6 +41,29 @@ export default function RulesPage() {
     }
     setFilteredRules(rules)
   }, [searchParams])
+  
+  // Real-time filtering as user types
+  useEffect(() => {
+    let rules = allRules
+    
+    // Apply search filter
+    if (searchQuery.trim() !== "") {
+      rules = rules.filter(
+        (rule) =>
+          rule.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          rule.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
+    }
+    
+    // Apply category filters
+    if (selectedCategories.length > 0) {
+      rules = rules.filter((rule) => 
+        selectedCategories.some((cat) => rule.tags.includes(cat))
+      )
+    }
+    
+    setFilteredRules(rules)
+  }, [searchQuery, selectedCategories])
 
   // Toggle category selection
   const toggleCategory = (category: string) => {
@@ -52,17 +76,27 @@ export default function RulesPage() {
   const allCategories = Array.from(new Set(allRules.flatMap((rule) => rule.tags))).sort()
 
   const handleCategoryChange = (newCategory: string) => {
-    const currentSearch = searchParams.get("search") || ""
+    const currentSearch = searchQuery
     setSelectedCategories(newCategory === "all" ? [] : [newCategory])
     // Update URL
-    const params = new URLSearchParams()
-    if (currentSearch) params.set("search", currentSearch)
-    if (newCategory !== "all") params.set("category", newCategory)
-    window.history.pushState(null, "", `/rules?${params.toString()}`)
+    updateUrlParams(currentSearch, newCategory === "all" ? [] : [newCategory])
   }
 
   const clearCategoryFilter = () => {
-    handleCategoryChange("all")
+    setSelectedCategories([])
+    updateUrlParams(searchQuery, [])
+  }
+  
+  const updateUrlParams = (search: string, categories: string[]) => {
+    const params = new URLSearchParams()
+    if (search) params.set("search", search)
+    if (categories.length > 0) params.set("category", categories[0])
+    router.push(`/rules?${params.toString()}`, { scroll: false })
+  }
+  
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    updateUrlParams(searchQuery, selectedCategories)
   }
 
   return (
@@ -73,7 +107,7 @@ export default function RulesPage() {
 
           {/* Search and Filter */}
           <div className="flex flex-col md:flex-row gap-4 mb-8">
-            <div className="relative flex-1">
+            <form onSubmit={handleSearchSubmit} className="relative flex-1">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
@@ -85,7 +119,8 @@ export default function RulesPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search for rules"
               />
-            </div>
+              <button type="submit" className="sr-only">Search</button>
+            </form>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -164,6 +199,7 @@ export default function RulesPage() {
                 onClick={() => {
                   setSearchQuery("")
                   setSelectedCategories([])
+                  router.push("/rules")
                 }}
                 aria-label="Clear all filters"
               >
