@@ -112,9 +112,9 @@ export default function RuleContent({ params }: RuleContentProps) {
                   aria-label="Copy command"
                 >
                   {copied === "command" ? (
-                    <><Check className="h-4 w-4 mr-2" />Copied</>
+                    <><Check className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">Copied</span></>
                   ) : (
-                    <><Terminal className="h-4 w-4 mr-2" />Command</>
+                    <><Terminal className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">Command</span></>
                   )}
                 </Button>
                 <Button
@@ -125,9 +125,9 @@ export default function RuleContent({ params }: RuleContentProps) {
                   aria-label="Copy URL"
                 >
                   {copied === "url" ? (
-                    <><Check className="h-4 w-4 mr-2" />Copied</>
+                    <><Check className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">Copied</span></>
                   ) : (
-                    <><LinkIcon className="h-4 w-4 mr-2" />URL</>
+                    <><LinkIcon className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">URL</span></>
                   )}
                 </Button>
                 <Button
@@ -138,9 +138,9 @@ export default function RuleContent({ params }: RuleContentProps) {
                   aria-label="Copy content"
                 >
                   {copied === "content" ? (
-                    <><Check className="h-4 w-4 mr-2" />Copied</>
+                    <><Check className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">Copied</span></>
                   ) : (
-                    <><Copy className="h-4 w-4 mr-2" />Content</>
+                    <><Copy className="h-4 w-4 md:mr-2" /><span className="hidden md:inline">Content</span></>
                   )}
                 </Button>
               </div>
