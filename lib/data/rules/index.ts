@@ -19,6 +19,7 @@ import { HtmlCssBestPracticesRules } from './html-css-best-practices';
 import { JavaSpringRules } from './java-spring';
 import { JavaQuarkusRules } from './java-quarkus';
 import { TraeIDEWorkflowRules } from './trae-ide-workflow';
+import { SwiftSwiftUICOTRules } from './swift-swiftui-cot-development';
 
 // Combine all rules into one array
 export const allRules = [
@@ -42,7 +43,8 @@ export const allRules = [
   ...HtmlCssBestPracticesRules,
   ...JavaSpringRules,
   ...JavaQuarkusRules,
-  ...TraeIDEWorkflowRules
+  ...TraeIDEWorkflowRules,
+  ...SwiftSwiftUICOTRules
 ];
 
 // Export individual rule collections for direct use
@@ -67,5 +69,6 @@ export {
   HtmlCssBestPracticesRules,
   JavaSpringRules,
   JavaQuarkusRules,
-  TraeIDEWorkflowRules
+  TraeIDEWorkflowRules,
+  SwiftSwiftUICOTRules
 }; 
