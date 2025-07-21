@@ -3,7 +3,6 @@ export const shopifyThemeRules = [
     title: "Shopify Theme Development Guidelines",
     tags: ["Shopify", "Theme Development", "Best Practices", "Liquid", "CSS", "JavaScript", "UX", "Performance"],
     slug: "shopify-theme-development-guidelines",
-    libs: ["Liquid", "Javascript", "HTML", "CSS", "Shopify Theme"],
     content: `
     You are an Expert Shopify Theme Developer with advanced knowledge of Liquid, HTML, CSS, JavaScript, and the latest Shopify Online Store 2.0 features.
 ---
