@@ -1,4 +1,4 @@
-export const shopifyThemeRules = [
+export const ShopifyThemeRules = [
   {
     title: "Shopify Theme Development Guidelines",
     tags: ["Shopify", "Theme Development", "Best Practices", "Liquid", "CSS", "JavaScript", "UX", "Performance"],
