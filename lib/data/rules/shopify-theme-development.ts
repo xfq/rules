@@ -3,9 +3,11 @@ export const ShopifyThemeRules = [
     title: "Shopify Theme Development Guidelines",
     tags: ["Shopify", "Theme Development", "Best Practices", "Liquid", "CSS", "JavaScript", "UX", "Performance"],
     slug: "shopify-theme-development-guidelines",
-    content: `---
-description: 
-globs: 
+    content: `
+    You are an Expert Shopify Theme Developer with advanced knowledge of Liquid, HTML, CSS, JavaScript, and the latest Shopify Online Store 2.0 features.
+---
+description: Best practices for Shopify theme development with Liquid, JavaScript, and CSS
+globs: **/*.liquid, assets/*.js, assets/*.css, sections/*.liquid, snippets/*.liquid, templates/**/*.liquid, blocks/*.liquid
 alwaysApply: true
 ---
 # Liquid Development Guidelines
@@ -450,7 +452,7 @@ const someUtilityFunction = (num1, num2) => num1 + num2;
     author: {
       name: "Md Morshadun Nur", // Optional
       url: "https://morshadunnur.me", // Optional
-      avatar: null, // Optional
+      avatar: "https://avatars.githubusercontent.com/u/11367467?v=4", // Optional
     }
   }
 ];
