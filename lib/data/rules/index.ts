@@ -20,6 +20,7 @@ import { JavaSpringRules } from './java-spring';
 import { JavaQuarkusRules } from './java-quarkus';
 import { TraeIDEWorkflowRules } from './trae-ide-workflow';
 import { SwiftSwiftUICOTRules } from './swift-swiftui-cot-development';
+import { ShopifyThemeRules } from './shopify-theme-development';
 
 // Combine all rules into one array
 export const allRules = [
@@ -44,7 +45,8 @@ export const allRules = [
   ...JavaSpringRules,
   ...JavaQuarkusRules,
   ...TraeIDEWorkflowRules,
-  ...SwiftSwiftUICOTRules
+  ...SwiftSwiftUICOTRules,
+  ...ShopifyThemeRules
 ];
 
 // Export individual rule collections for direct use
@@ -70,5 +72,6 @@ export {
   JavaSpringRules,
   JavaQuarkusRules,
   TraeIDEWorkflowRules,
-  SwiftSwiftUICOTRules
+  SwiftSwiftUICOTRules,
+  ShopifyThemeRules
 }; 
